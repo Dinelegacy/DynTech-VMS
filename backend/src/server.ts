@@ -2,7 +2,7 @@ import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
 import authRoutes from './routes/auth.routes';
-import { cameraRoutes } from './routes/camera.routes';
+import cameraRoutes from './routes/camera.routes'; 
 
 dotenv.config();
 

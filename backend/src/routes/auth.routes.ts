@@ -1,6 +1,15 @@
-import { Router } from 'express';
+import { Router, Request, Response } from 'express';
 import { register, login } from '../controllers/auth.controller';
 import { authenticateToken, authorizeRoles } from '../middleware/auth.middleware';
+
+// Define the shape of your authenticated request
+interface AuthRequest extends Request {
+  user?: {
+    id: string;
+    email?: string;
+    role?: string;
+  };
+}
 
 const router = Router();
 
@@ -8,16 +17,16 @@ const router = Router();
 router.post('/register', register);
 router.post('/login', login);
 
-// Protected test route (VIP access only)
-router.get('/me', authenticateToken, (req, res) => {
+// Protected test route
+router.get('/me', authenticateToken, (req: AuthRequest, res: Response) => {
   res.json({
     message: 'Access granted to protected route!',
-    currentUser: req.user, // Shows decoded token info
+    currentUser: req.user,
   });
 });
 
-// Role-protected test route (Admin/Operator only)
-router.get('/admin-test', authenticateToken, authorizeRoles('ADMIN', 'OPERATOR'), (req, res) => {
+// Role-protected test route
+router.get('/admin-test', authenticateToken, authorizeRoles('ADMIN', 'OPERATOR'), (req: Request, res: Response) => {
   res.json({
     message: 'Welcome to the operator dashboard!',
   });

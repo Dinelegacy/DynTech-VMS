@@ -1,0 +1,83 @@
+/* [project]/src/components/Footer/Footer.module.css [app-client] (css) */
+.Footer-module__Grjkva__footer {
+  background-color: #000;
+  border-top: 1px solid #ffffff14;
+  width: 100%;
+  padding: 4rem 1.5rem 3rem;
+  font-family: -apple-system, BlinkMacSystemFont, SF Pro Display, system-ui, sans-serif;
+}
+
+.Footer-module__Grjkva__container {
+  flex-direction: column;
+  gap: 3rem;
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+}
+
+.Footer-module__Grjkva__brandRow {
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1.5rem;
+  display: flex;
+}
+
+.Footer-module__Grjkva__logoGroup {
+  align-items: center;
+  gap: .75rem;
+  display: flex;
+}
+
+.Footer-module__Grjkva__logoBadge {
+  color: #000;
+  background-color: #fff;
+  border-radius: 6px;
+  justify-content: center;
+  align-items: center;
+  width: 28px;
+  height: 28px;
+  font-size: .85rem;
+  font-weight: 800;
+  display: flex;
+}
+
+.Footer-module__Grjkva__brandName {
+  color: #fff;
+  letter-spacing: -.02em;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.Footer-module__Grjkva__navRow {
+  border-top: 1px solid #ffffff0d;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1.5rem;
+  padding-top: 2rem;
+  display: flex;
+}
+
+.Footer-module__Grjkva__links {
+  align-items: center;
+  gap: 2rem;
+  display: flex;
+}
+
+.Footer-module__Grjkva__link {
+  color: #71717a;
+  font-size: .85rem;
+  transition: color .15s;
+}
+
+.Footer-module__Grjkva__link:hover {
+  color: #fff;
+}
+
+.Footer-module__Grjkva__copyright {
+  color: #52525b;
+  font-size: .85rem;
+}
+
+/*# sourceMappingURL=src_components_Footer_Footer_module_css_1igg3k2._.single.css.map*/

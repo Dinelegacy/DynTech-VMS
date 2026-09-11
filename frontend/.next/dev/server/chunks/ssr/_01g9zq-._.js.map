@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 4, "column": 0}, "map": {"version":3,"sources":["file:///Users/Dine/Documents/Fundamental-FED27/Praticals/dyn-tech-vms/frontend/node_modules/next/src/server/route-modules/app-page/vendored/rsc/react-jsx-dev-runtime.ts"],"sourcesContent":["module.exports = (\n  require('../../module.compiled') as typeof import('../../module.compiled')\n).vendored['react-rsc']!.ReactJsxDevRuntime\n"],"names":["module","exports","require","vendored","ReactJsxDevRuntime"],"mappings":"AAAAA,OAAOC,OAAO,GACZC,QAAQ,4HACRC,QAAQ,CAAC,YAAY,CAAEC,kBAAkB","ignoreList":[0]}},
+    {"offset": {"line": 9, "column": 0}, "map": {"version":3,"sources":["file:///Users/Dine/Documents/Fundamental-FED27/Praticals/dyn-tech-vms/frontend/src/app/layout.tsx"],"sourcesContent":["import Navbar from '@/components/Navbar/Navbar';\nimport Footer from '@/components/Footer/Footer';\nimport './globals.css';\n\nexport default function RootLayout({\n  children,\n}: {\n  children: React.ReactNode;\n}) {\n  return (\n    <html lang=\"en\">\n      <body>\n        <Navbar />\n        <main>{children}</main>\n        <Footer />\n      </body>\n    </html>\n  );\n}"],"names":["RootLayout","children","lang","Navbar","Footer"],"mappings":";;;;;;;;;;;;;;;;;;;AAIe,SAASA,WAAW,EACjCC,QAAQ,EAGT;IACC,qBACE,8OAAC;QAAKC,MAAK;kBACT,cAAA,8OAAC;;8BACC,8OAACC;;;;;8BACD,8OAAC;8BAAMF;;;;;;8BACP,8OAACG;;;;;;;;;;;;;;;;AAIT"}}]
+}

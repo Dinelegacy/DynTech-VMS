@@ -1,0 +1,214 @@
+/* [project]/src/components/Navbar/Navbar.module.css [app-client] (css) */
+.Navbar-module___rHu7W__navbar {
+  -webkit-backdrop-filter: blur(12px);
+  z-index: 1000;
+  background-color: #000000d9;
+  border-bottom: 1px solid #ffffff14;
+  width: 100%;
+  height: 72px;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+.Navbar-module___rHu7W__container {
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  height: 100%;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  display: flex;
+}
+
+.Navbar-module___rHu7W__brand {
+  align-items: center;
+  gap: .75rem;
+  display: flex;
+}
+
+.Navbar-module___rHu7W__logoBadge {
+  color: #000;
+  background-color: #fff;
+  border-radius: 6px;
+  justify-content: center;
+  align-items: center;
+  width: 28px;
+  height: 28px;
+  font-size: .85rem;
+  font-weight: 800;
+  display: flex;
+}
+
+.Navbar-module___rHu7W__brandName {
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.Navbar-module___rHu7W__navLinks {
+  align-items: center;
+  gap: 2.5rem;
+  display: flex;
+}
+
+.Navbar-module___rHu7W__navLink {
+  color: #a1a1aa;
+  font-size: .9rem;
+  transition: color .15s;
+}
+
+.Navbar-module___rHu7W__navLink:hover {
+  color: #fff;
+}
+
+.Navbar-module___rHu7W__actions {
+  align-items: center;
+  gap: 1.5rem;
+  display: flex;
+}
+
+.Navbar-module___rHu7W__loginBtn {
+  color: #a1a1aa;
+  font-size: .9rem;
+  transition: color .15s;
+}
+
+.Navbar-module___rHu7W__loginBtn:hover {
+  color: #fff;
+}
+
+.Navbar-module___rHu7W__ctaBtn {
+  color: #000;
+  background-color: #fff;
+  border-radius: 980px;
+  padding: .6rem 1.25rem;
+  font-size: .85rem;
+  font-weight: 600;
+  transition: background-color .15s;
+}
+
+.Navbar-module___rHu7W__ctaBtn:hover {
+  background-color: #e4e4e7;
+}
+
+/* [project]/src/components/Footer/Footer.module.css [app-client] (css) */
+.Footer-module__Grjkva__footer {
+  background-color: #000;
+  border-top: 1px solid #ffffff14;
+  width: 100%;
+  padding: 4rem 1.5rem 3rem;
+  font-family: -apple-system, BlinkMacSystemFont, SF Pro Display, system-ui, sans-serif;
+}
+
+.Footer-module__Grjkva__container {
+  flex-direction: column;
+  gap: 3rem;
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+}
+
+.Footer-module__Grjkva__brandRow {
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1.5rem;
+  display: flex;
+}
+
+.Footer-module__Grjkva__logoGroup {
+  align-items: center;
+  gap: .75rem;
+  display: flex;
+}
+
+.Footer-module__Grjkva__logoBadge {
+  color: #000;
+  background-color: #fff;
+  border-radius: 6px;
+  justify-content: center;
+  align-items: center;
+  width: 28px;
+  height: 28px;
+  font-size: .85rem;
+  font-weight: 800;
+  display: flex;
+}
+
+.Footer-module__Grjkva__brandName {
+  color: #fff;
+  letter-spacing: -.02em;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.Footer-module__Grjkva__navRow {
+  border-top: 1px solid #ffffff0d;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1.5rem;
+  padding-top: 2rem;
+  display: flex;
+}
+
+.Footer-module__Grjkva__links {
+  align-items: center;
+  gap: 2rem;
+  display: flex;
+}
+
+.Footer-module__Grjkva__link {
+  color: #71717a;
+  font-size: .85rem;
+  transition: color .15s;
+}
+
+.Footer-module__Grjkva__link:hover {
+  color: #fff;
+}
+
+.Footer-module__Grjkva__copyright {
+  color: #52525b;
+  font-size: .85rem;
+}
+
+/* [project]/src/app/globals.css [app-client] (css) */
+:root {
+  --bg-primary: #fff;
+  --text-primary: #09090b;
+  --text-secondary: #71717a;
+  --border-color: #00000014;
+  --card-bg: #00000005;
+  --btn-primary-bg: #09090b;
+  --btn-primary-text: #fff;
+  --btn-secondary-border: #00000026;
+  --glow-orb-1: #0000000f;
+  --glow-orb-2: #00000008;
+  --grid-line: #0000000a;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg-primary: #000;
+    --text-primary: #fff;
+    --text-secondary: #a1a1aa;
+    --border-color: #ffffff1a;
+    --card-bg: #ffffff08;
+    --btn-primary-bg: #fff;
+    --btn-primary-text: #000;
+    --btn-secondary-border: #fff3;
+    --glow-orb-1: #ffffff1f;
+    --glow-orb-2: #ffffff0d;
+    --grid-line: #ffffff08;
+  }
+}
+
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  transition: background-color .3s, color .3s;
+}
+
+/*# sourceMappingURL=src_0hl-2l3._.css.map*/

@@ -1,0 +1,61 @@
+/* [project]/src/components/CTA/CTA.module.css [app-client] (css) */
+.CTA-module__ad7sBG__section {
+  background-color: #000;
+  width: 100%;
+  padding: 6rem 1.5rem;
+}
+
+.CTA-module__ad7sBG__card {
+  text-align: center;
+  background: #ffffff05;
+  border: 1px solid #ffffff1a;
+  border-radius: 24px;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 5rem 2rem;
+}
+
+.CTA-module__ad7sBG__title {
+  letter-spacing: -.03em;
+  color: #fff;
+  margin-bottom: 1rem;
+  font-size: clamp(2.25rem, 4.5vw, 3.5rem);
+  font-weight: 700;
+}
+
+.CTA-module__ad7sBG__subtitle {
+  color: #a1a1aa;
+  max-width: 580px;
+  margin: 0 auto 2.5rem;
+  font-size: 1.05rem;
+  line-height: 1.6;
+}
+
+.CTA-module__ad7sBG__actionWrapper {
+  flex-direction: column;
+  align-items: center;
+  gap: 1.25rem;
+  display: flex;
+}
+
+.CTA-module__ad7sBG__primaryBtn {
+  color: #000;
+  background-color: #fff;
+  border-radius: 980px;
+  padding: .9rem 2rem;
+  font-size: .95rem;
+  font-weight: 600;
+  transition: background-color .15s, transform .15s;
+}
+
+.CTA-module__ad7sBG__primaryBtn:hover {
+  background-color: #e4e4e7;
+  transform: translateY(-1px);
+}
+
+.CTA-module__ad7sBG__finePrint {
+  color: #52525b;
+  font-size: .8rem;
+}
+
+/*# sourceMappingURL=src_components_CTA_CTA_module_css_1igg3k2._.single.css.map*/

@@ -22,3 +22,7 @@ router.post('/cameras/:id/start', async (req: Request<CameraParams>, res: Respon
     res.status(500).json({ error: error.message });
   }
 });
+
+
+
+export default router;

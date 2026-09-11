@@ -1,0 +1,6 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 1, "column": 0}, "map": {"version":3,"sources":["file:///Users/Dine/Documents/Fundamental-FED27/Praticals/dyn-tech-vms/frontend/src/app/globals.css"],"sourcesContent":[":root {\n  --bg-primary: #000000;\n  --bg-card: rgba(255, 255, 255, 0.03);\n  --border-color: rgba(255, 255, 255, 0.1);\n  --text-primary: #ffffff;\n  --text-secondary: #a1a1aa;\n  --text-muted: #52525b;\n}\n\n* {\n  box-sizing: border-box;\n  margin: 0;\n  padding: 0;\n  outline-color: #ffffff;\n}\n\n::selection {\n  background-color: #ffffff;\n  color: #000000;\n}\n\nhtml,\nbody {\n  background-color: var(--bg-primary);\n  color: var(--text-primary);\n  font-family: -apple-system, BlinkMacSystemFont, \"SF Pro Display\", \"SF Pro Text\", system-ui, sans-serif;\n  -webkit-font-smoothing: antialiased;\n  max-width: 100vw;\n  overflow-x: hidden;\n}\n\na {\n  color: inherit;\n  text-decoration: none;\n}\n\nbutton {\n  background: none;\n  border: none;\n  font: inherit;\n  cursor: pointer;\n  color: inherit;\n}"],"names":[],"mappings":"AAAA;;;;;;;;;AASA;;;;;;;AAOA;;;;;AAKA;;;;;;;;;AAUA;;;;;AAKA"}}]
+}

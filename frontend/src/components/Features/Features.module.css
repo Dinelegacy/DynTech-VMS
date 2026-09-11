@@ -1,0 +1,119 @@
+.section {
+  width: 100%;
+  background-color: #000000;
+  color: #ffffff;
+  padding: 8rem 0;
+  overflow: hidden;
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+.heroTextContainer {
+  max-width: 1200px;
+  margin: 0 auto 6rem auto;
+  padding: 0 2rem;
+}
+
+.mainTitle {
+  font-size: clamp(3rem, 7vw, 6rem);
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  line-height: 1.05;
+  color: #ffffff;
+}
+
+.mutedText {
+  color: #52525b;
+}
+
+/* Minimalist Marquee Track */
+.marqueeSection {
+  margin-bottom: 8rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 2.25rem 0;
+}
+
+.marqueeTrack {
+  display: flex;
+  overflow: hidden;
+  user-select: none;
+  mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
+}
+
+.marqueeContent {
+  display: flex;
+  gap: 4.5rem;
+  animation: scroll 30s linear infinite;
+  white-space: nowrap;
+}
+
+.brandTag {
+  font-size: 1.25rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: #a1a1aa;
+  transition: color 0.2s ease;
+}
+
+.brandTag:hover {
+  color: #ffffff;
+}
+
+@keyframes scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.gridContainer {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+  gap: 3rem;
+}
+
+.featureCard {
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+  padding-top: 2rem;
+}
+
+.cardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+
+.cardNumber {
+  font-size: 0.85rem;
+  color: #52525b;
+}
+
+.cardTag {
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  color: #71717a;
+}
+
+.cardTitle {
+  font-size: 1.75rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: #ffffff;
+  margin-bottom: 1rem;
+}
+
+.cardBody {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #a1a1aa;
+  font-weight: 400;
+}

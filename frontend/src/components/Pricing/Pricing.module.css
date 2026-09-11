@@ -1,0 +1,158 @@
+.section {
+  width: 100%;
+  background-color: #000000;
+  padding: 8rem 1.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 5rem;
+}
+
+.title {
+  font-size: clamp(2.25rem, 5vw, 3.5rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  color: #ffffff;
+  margin-bottom: 1rem;
+}
+
+.subtitle {
+  font-size: 1.05rem;
+  color: #71717a;
+  max-width: 540px;
+  margin: 0 auto;
+  line-height: 1.5;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  align-items: stretch;
+}
+
+.card {
+  position: relative;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  padding: 2.5rem 2rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.cardFeatured {
+  background: rgba(255, 255, 255, 0.04);
+  border-color: #ffffff;
+}
+
+.featuredBadge {
+  position: absolute;
+  top: -12px;
+  left: 2rem;
+  background: #ffffff;
+  color: #000000;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  padding: 0.2rem 0.6rem;
+  border-radius: 4px;
+}
+
+.planName {
+  font-size: 1.35rem;
+  font-weight: 600;
+  color: #ffffff;
+  margin-bottom: 0.5rem;
+}
+
+.planTagline {
+  font-size: 0.875rem;
+  color: #71717a;
+  margin-bottom: 2rem;
+  min-height: 2.5rem;
+}
+
+.priceContainer {
+  display: flex;
+  align-items: baseline;
+  gap: 0.3rem;
+  margin-bottom: 2.5rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.price {
+  font-size: 3rem;
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  color: #ffffff;
+}
+
+.period {
+  font-size: 0.9rem;
+  color: #71717a;
+}
+
+.featureList {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  margin-bottom: 3rem;
+  flex-grow: 1;
+}
+
+.featureItem {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 0.875rem;
+  color: #a1a1aa;
+}
+
+.checkIcon {
+  color: #ffffff;
+  flex-shrink: 0;
+}
+
+.primaryBtn {
+  display: block;
+  text-align: center;
+  background-color: #ffffff;
+  color: #000000;
+  font-size: 0.875rem;
+  font-weight: 600;
+  padding: 0.85rem 1.5rem;
+  border-radius: 980px;
+  transition: opacity 0.15s ease;
+}
+
+.primaryBtn:hover {
+  opacity: 0.9;
+}
+
+.secondaryBtn {
+  display: block;
+  text-align: center;
+  background-color: transparent;
+  color: #ffffff;
+  font-size: 0.875rem;
+  font-weight: 500;
+  padding: 0.85rem 1.5rem;
+  border-radius: 980px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: border-color 0.15s ease, background-color 0.15s ease;
+}
+
+.secondaryBtn:hover {
+  border-color: rgba(255, 255, 255, 0.5);
+  background-color: rgba(255, 255, 255, 0.05);
+}

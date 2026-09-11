@@ -1,0 +1,37 @@
+:root {
+  /* Light Theme Defaults */
+  --bg-primary: #ffffff;
+  --text-primary: #09090b;
+  --text-secondary: #71717a;
+  --border-color: rgba(0, 0, 0, 0.08);
+  --card-bg: rgba(0, 0, 0, 0.02);
+  --btn-primary-bg: #09090b;
+  --btn-primary-text: #ffffff;
+  --btn-secondary-border: rgba(0, 0, 0, 0.15);
+  --glow-orb-1: rgba(0, 0, 0, 0.06);
+  --glow-orb-2: rgba(0, 0, 0, 0.03);
+  --grid-line: rgba(0, 0, 0, 0.04);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    /* Dark Theme Overrides */
+    --bg-primary: #000000;
+    --text-primary: #ffffff;
+    --text-secondary: #a1a1aa;
+    --border-color: rgba(255, 255, 255, 0.1);
+    --card-bg: rgba(255, 255, 255, 0.03);
+    --btn-primary-bg: #ffffff;
+    --btn-primary-text: #000000;
+    --btn-secondary-border: rgba(255, 255, 255, 0.2);
+    --glow-orb-1: rgba(255, 255, 255, 0.12);
+    --glow-orb-2: rgba(255, 255, 255, 0.05);
+    --grid-line: rgba(255, 255, 255, 0.03);
+  }
+}
+
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}

@@ -1,0 +1,100 @@
+/* [project]/src/components/Header/Header.module.css [app-client] (css) */
+.Header-module__ldgnoG__header {
+  z-index: 100;
+  -webkit-backdrop-filter: blur(12px);
+  background-color: #000000bf;
+  border-bottom: 1px solid #ffffff14;
+  position: sticky;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
+.Header-module__ldgnoG__container {
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1100px;
+  height: 64px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  display: flex;
+}
+
+.Header-module__ldgnoG__brand {
+  align-items: center;
+  gap: .6rem;
+  display: flex;
+}
+
+.Header-module__ldgnoG__brandLogo {
+  color: #000;
+  background: #fff;
+  border-radius: 6px;
+  justify-content: center;
+  align-items: center;
+  width: 26px;
+  height: 26px;
+  font-size: .8rem;
+  font-weight: 700;
+  display: flex;
+}
+
+.Header-module__ldgnoG__brandName {
+  color: #fff;
+  letter-spacing: -.01em;
+  font-size: .95rem;
+  font-weight: 600;
+}
+
+.Header-module__ldgnoG__brandMuted {
+  color: #71717a;
+  font-weight: 400;
+}
+
+.Header-module__ldgnoG__nav {
+  align-items: center;
+  gap: 2rem;
+  display: flex;
+}
+
+.Header-module__ldgnoG__navItem {
+  color: #a1a1aa;
+  font-size: .875rem;
+  transition: color .15s;
+}
+
+.Header-module__ldgnoG__navItem:hover {
+  color: #fff;
+}
+
+.Header-module__ldgnoG__actions {
+  align-items: center;
+  gap: 1rem;
+  display: flex;
+}
+
+.Header-module__ldgnoG__loginBtn {
+  color: #a1a1aa;
+  font-size: .875rem;
+  transition: color .15s;
+}
+
+.Header-module__ldgnoG__loginBtn:hover {
+  color: #fff;
+}
+
+.Header-module__ldgnoG__signupBtn {
+  color: #000;
+  background-color: #fff;
+  border-radius: 980px;
+  padding: .45rem .9rem;
+  font-size: .85rem;
+  font-weight: 500;
+  transition: opacity .15s;
+}
+
+.Header-module__ldgnoG__signupBtn:hover {
+  opacity: .9;
+}
+
+/*# sourceMappingURL=src_components_Header_Header_module_css_1igg3k2._.single.css.map*/
