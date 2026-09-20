@@ -1,17 +1,18 @@
+# Environment & OS
 .env
 .env.local
 .env*.local
-
-# Next.js build output
-.next/
-frontend/.next/
-out/
-build/
-
-# Dependencies
-node_modules/
-frontend/node_modules/
-
-# Logs & temp files
-*.log
 .DS_Store
+
+# Next.js Build Output & Cache (matches both root and frontend subfolder)
+**/.next
+.next
+out
+build
+
+# Dependencies (matches both root and frontend subfolder)
+**/node_modules
+node_modules
+
+# Logs
+*.log
