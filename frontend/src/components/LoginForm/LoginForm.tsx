@@ -1,61 +1,101 @@
 'use client';
 
 import React, { useState } from 'react';
+import Link from 'next/link';
+import { useRouter } from 'next/navigation';
+import { useLanguage } from '../../context/LanguageContext';
 import styles from './LoginForm.module.css';
 
 export default function LoginForm() {
-  const [email, setEmail] = useState('');
+  const { t } = useLanguage();
+  const router = useRouter();
+  const [email, setEmail] = useState('admin@dyntech.se');
   const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
+  const [loading, setLoading] = useState(false);
+
+  const handleLogin = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setError('');
+    setLoading(true);
+
+    try {
+      const res = await fetch('http://localhost:5001/api/v1/auth/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, password }),
+      });
+
+      const data = await res.json();
+
+      if (res.ok) {
+        if (data.token) {
+          localStorage.setItem('token', data.token);
+        }
+        router.push('/demo');
+      } else {
+        setError(data.message || data.error || 'Invalid credentials');
+      }
+    } catch (err) {
+      setError('Backend connection error. Make sure server is running on http://localhost:5001.');
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return (
-    <div className={styles.container}>
-      <div className={styles.card}>
-        <div className={styles.logoBadge}>D</div>
-        <h1 className={styles.title}>Sign in to DynTech</h1>
-        <p className={styles.subtitle}>Enter your details to access the VMS platform</p>
+    <div className={styles.formCard}>
+      <h1 className={styles.title}>{t('login_title')}</h1>
+      <p className={styles.subtitle}>{t('login_subtitle')}</p>
 
-        <form onSubmit={(e) => e.preventDefault()} className={styles.form}>
-          <div className={styles.inputGroup}>
-            <label htmlFor="email" className={styles.label}>Email address</label>
-            <input
-              id="email"
-              type="email"
-              placeholder="name@company.com"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              required
-              className={styles.input}
-            />
-          </div>
+      {error && <p style={{ color: '#ff4d4d', fontSize: '14px', marginBottom: '12px' }}>{error}</p>}
 
-          <div className={styles.inputGroup}>
-            <div className={styles.labelRow}>
-              <label htmlFor="password" className={styles.label}>Password</label>
-              <a href="#" className={styles.forgotLink}>Forgot?</a>
-            </div>
-            <input
-              id="password"
-              type="password"
-              placeholder="••••••••"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              required
-              className={styles.input}
-            />
-          </div>
+      <form onSubmit={handleLogin} className={styles.form}>
+        <div className={styles.inputGroup}>
+          <label className={styles.label}>{t('email_label')}</label>
+          <input
+            type="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            placeholder={t('email_placeholder')}
+            className={styles.input}
+            required
+          />
+        </div>
 
-          <button type="submit" className={styles.submitBtn}>
-            Log In →
-          </button>
-        </form>
+        <div className={styles.inputGroup}>
+          <label className={styles.label}>{t('password_label')}</label>
+          <input
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            placeholder={t('password_placeholder')}
+            className={styles.input}
+            required
+          />
+        </div>
 
-        <p className={styles.footer}>
-          Don't have an account?
-          <a href="/signup" className={styles.signupLink}>
-            Start Free Trial
-          </a>
-        </p>
-      </div>
+        <div className={styles.optionsRow}>
+          <label className={styles.checkboxLabel}>
+            <input type="checkbox" className={styles.checkbox} />
+            <span>{t('remember_me')}</span>
+          </label>
+          <Link href="/forgot-password" className={styles.forgotLink}>
+            {t('forgot_password')}
+          </Link>
+        </div>
+
+        <button type="submit" className={styles.submitBtn} disabled={loading}>
+          {loading ? 'Authenticating...' : t('sign_in_btn')}
+        </button>
+      </form>
+
+      <p className={styles.footerText}>
+        {t('no_account')}{' '}
+        <Link href="/signup" className={styles.link}>
+          {t('start_trial')}
+        </Link>
+      </p>
     </div>
   );
 }

@@ -1,6 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import { useLanguage } from '../../context/LanguageContext';
 import styles from './Features.module.css';
 
 const cameraBrands = [
@@ -15,6 +16,8 @@ const cameraBrands = [
 ];
 
 export default function Features() {
+  const { t } = useLanguage();
+
   return (
     <section id="features" className={styles.section}>
       {/* Editorial Headline Section */}
@@ -26,8 +29,8 @@ export default function Features() {
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
           className={styles.mainTitle}
         >
-          Built for scale.<br />
-          <span className={styles.mutedText}>Engineered for zero latency.</span>
+          {t('features_heading_1')}<br />
+          <span className={styles.mutedText}>{t('features_heading_2')}</span>
         </motion.h2>
       </div>
 
@@ -49,22 +52,22 @@ export default function Features() {
         <div className={styles.featureCard}>
           <div className={styles.cardHeader}>
             <span className={styles.cardNumber}>01</span>
-            <span className={styles.cardTag}>TELEMETRY PIPELINE</span>
+            <span className={styles.cardTag}>{t('features_tag_1')}</span>
           </div>
-          <h3 className={styles.cardTitle}>MediaMTX WHEP Engine</h3>
+          <h3 className={styles.cardTitle}>{t('features_title_1')}</h3>
           <p className={styles.cardBody}>
-            Direct WebRTC ingestion from standard RTSP streams. Delivers glass-to-glass video latency under 200ms without browser plugins or proprietary gateway hardware.
+            {t('features_body_1')}
           </p>
         </div>
 
         <div className={styles.featureCard}>
           <div className={styles.cardHeader}>
             <span className={styles.cardNumber}>02</span>
-            <span className={styles.cardTag}>SPATIAL ANALYTICS</span>
+            <span className={styles.cardTag}>{t('features_tag_2')}</span>
           </div>
-          <h3 className={styles.cardTitle}>Dynamic AI Inference</h3>
+          <h3 className={styles.cardTitle}>{t('features_title_2')}</h3>
           <p className={styles.cardBody}>
-            Run edge-level detection models dynamically per camera feed. Instantly index person tracking, bounding box overlays, and spatial incidents across your entire network.
+            {t('features_body_2')}
           </p>
         </div>
       </div>

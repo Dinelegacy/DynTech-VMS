@@ -55,7 +55,7 @@ model Camera {
   name               String   // e.g. "CAM-01 Entrance North"
   rtspUrl            String   @map("rtsp_url")
   webrtcStreamId     String?  @unique @map("webrtc_stream_id")
-  isDyntechHardware Boolean  @default(false) @map("is_dyntech_hardware")
+  isDyntechHardware  Boolean  @default(false) @map("is_dyntech_hardware")
   aiDetectionEnabled Boolean  @default(true) @map("ai_detection_enabled")
   createdAt          DateTime @default(now()) @map("created_at")
 

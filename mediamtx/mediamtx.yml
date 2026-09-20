@@ -3,12 +3,23 @@ logLevel: info
 logDestinations: [stdout]
 logFile: mediamtx.log
 
+# Allow anonymous publishing and playback
+authMethod: internal
+authInternalUsers:
+  - user: any
+    pass:
+    ips: []
+    permissions:
+      - action: publish
+      - action: read
+      - action: playback
+
 # RTSP Server Settings
 rtsp: yes
 protocols: [tcp, udp]
 rtspAddress: :8554
 
-# WebRTC Server Settings (for web playback)
+# WebRTC Server Settings
 webrtc: yes
 webrtcAddress: :8889
 
@@ -18,9 +29,6 @@ hlsAddress: :8888
 
 # Path Configurations
 paths:
-  test-cam-01:
+  live:
     source: publisher
-    publishUser: ""
-    publishPass: ""
-
   all_others: {}

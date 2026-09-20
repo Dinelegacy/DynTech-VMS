@@ -1,61 +1,64 @@
 'use client';
 
 import Link from 'next/link';
+import { useLanguage } from '../../context/LanguageContext';
 import styles from './Pricing.module.css';
 
-const plans = [
-  {
-    name: 'Starter',
-    tagline: 'For localized edge deployments.',
-    price: '$290',
-    period: '/month',
-    features: [
-      'Up to 8 active camera streams',
-      'MediaMTX WHEP low-latency pipeline',
-      '7-day local retention storage',
-      'Community support access',
-    ],
-    highlighted: false,
-    cta: 'Start Free Trial',
-  },
-  {
-    name: 'Enterprise',
-    tagline: 'For multi-facility infrastructure.',
-    price: '$890',
-    period: '/month',
-    features: [
-      'Unlimited camera ingestion',
-      'Real-time spatial AI analytics',
-      '30-day automated cloud backup',
-      'Custom webhook triggers & API',
-      '24/7 dedicated support SLA',
-    ],
-    highlighted: true,
-    cta: 'Get Started',
-  },
-  {
-    name: 'Custom',
-    tagline: 'Dedicated hardware & air-gapped networks.',
-    price: 'Custom',
-    period: '',
-    features: [
-      'On-premise edge server deployment',
-      'Custom computer vision model training',
-      'Air-gapped security compliance',
-      'Dedicated integration engineer',
-    ],
-    highlighted: false,
-    cta: 'Contact Sales',
-  },
-];
-
 export default function Pricing() {
+  const { t } = useLanguage();
+
+  const plans = [
+    {
+      name: t('plan_starter_name'),
+      tagline: t('plan_starter_tagline'),
+      price: '$290',
+      period: t('plan_period_month'),
+      features: [
+        t('plan_starter_f1'),
+        t('plan_starter_f2'),
+        t('plan_starter_f3'),
+        t('plan_starter_f4'),
+      ],
+      highlighted: false,
+      cta: t('start_trial'),
+    },
+    {
+      name: t('plan_enterprise_name'),
+      tagline: t('plan_enterprise_tagline'),
+      price: '$890',
+      period: t('plan_period_month'),
+      features: [
+        t('plan_enterprise_f1'),
+        t('plan_enterprise_f2'),
+        t('plan_enterprise_f3'),
+        t('plan_enterprise_f4'),
+        t('plan_enterprise_f5'),
+      ],
+      highlighted: true,
+      cta: t('get_started'),
+    },
+    {
+      name: t('plan_custom_name'),
+      tagline: t('plan_custom_tagline'),
+      price: t('plan_custom_price'),
+      period: '',
+      features: [
+        t('plan_custom_f1'),
+        t('plan_custom_f2'),
+        t('plan_custom_f3'),
+        t('plan_custom_f4'),
+      ],
+      highlighted: false,
+      cta: t('contact_sales'),
+    },
+  ];
+
   return (
     <section id="pricing" className={styles.section}>
       <div className={styles.container}>
         <div className={styles.header}>
-          <h2 className={styles.title}>Predictable architecture pricing.</h2>
-          <p className={styles.subtitle}>Scale camera feeds without per-user penalties or hidden API bandwidth fees.</p>
+          <h2 className={styles.title}>{t('pricing_title')}</h2>
+          <p className={styles.subtitle}>{t('pricing_subtitle')}</p>
         </div>
 
         <div className={styles.grid}>
@@ -65,7 +68,7 @@ export default function Pricing() {
               className={`${styles.card} ${plan.highlighted ? styles.cardFeatured : ''}`}
             >
               {plan.highlighted && (
-                <div className={styles.featuredBadge}>MOST POPULAR</div>
+                <div className={styles.featuredBadge}>{t('most_popular')}</div>
               )}
 
               <h3 className={styles.planName}>{plan.name}</h3>

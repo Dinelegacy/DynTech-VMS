@@ -1,6 +1,0 @@
-{
-  "version": 3,
-  "sources": [],
-  "sections": [
-    {"offset": {"line": 1, "column": 0}, "map": {"version":3,"sources":["turbopack:///[project]/src/app/page.module.css"],"sourcesContent":[".mainWrapper {\n  background-color: #020617;\n  min-height: 100vh;\n  color: #f8fafc;\n  display: flex;\n  flex-direction: column;\n}\n\n.heroSection {\n  max-width: 56rem;\n  margin: 0 auto;\n  padding: 5rem 1.5rem 3rem;\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  text-align: center;\n}\n\n.badge {\n  padding: 0.25rem 0.75rem;\n  border-radius: 9999px;\n  font-size: 0.75rem;\n  font-weight: 600;\n  background-color: #052e16;\n  color: #4ade80;\n  border: 1px solid #166534;\n  margin-bottom: 1.5rem;\n}\n\n.heroTitle {\n  font-size: 3rem;\n  font-weight: 800;\n  color: #ffffff;\n  line-height: 1.15;\n  letter-spacing: -0.025em;\n  font-family: sans-serif;\n}\n\n.heroHighlight {\n  color: #3b82f6;\n}\n\n.heroSubtitle {\n  margin-top: 1.5rem;\n  font-size: 1.125rem;\n  color: #94a3b8;\n  max-width: 42rem;\n  line-height: 1.6;\n  font-family: sans-serif;\n}"],"names":[],"mappings":"AAAA;;;;;;;;AAQA;;;;;;;;;;AAUA;;;;;;;;;;;AAWA;;;;;;;;;AASA;;;;AAIA"}}]
-}

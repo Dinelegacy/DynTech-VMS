@@ -1,23 +1,26 @@
 'use client';
 
 import Link from 'next/link';
+import { useLanguage } from '../../context/LanguageContext';
 import styles from './CTA.module.css';
 
 export default function CTA() {
+  const { t } = useLanguage();
+
   return (
     <section className={styles.section}>
       <div className={styles.card}>
-        <h2 className={styles.title}>Ready to modernize your cameras?</h2>
+        <h2 className={styles.title}>{t('cta_title')}</h2>
         <p className={styles.subtitle}>
-          Join security teams already running DynTech VMS. No hardware lock-in, no long-term contracts.
+          {t('cta_subtitle')}
         </p>
 
         <div className={styles.actionWrapper}>
           <Link href="/demo" className={styles.primaryBtn}>
-            Start Free Trial &rarr;
+            {t('start_trial')} &rarr;
           </Link>
           <span className={styles.finePrint}>
-            No credit card required &middot; 14-day free trial &middot; Cancel anytime
+            {t('cta_fine_print')}
           </span>
         </div>
       </div>

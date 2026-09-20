@@ -2,9 +2,12 @@
 
 import Link from 'next/link';
 import { motion } from 'framer-motion';
+import { useLanguage } from '../../context/LanguageContext';
 import styles from './Hero.module.css';
 
 export default function Hero() {
+  const { t } = useLanguage();
+
   return (
     <section className={styles.hero}>
       <div className={styles.container}>
@@ -14,7 +17,7 @@ export default function Hero() {
           transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
           className={styles.title}
         >
-          Transform RTSP Cameras into Intelligent VMS Feeds
+          {t('hero_title')}
         </motion.h1>
 
         <motion.p 
@@ -23,7 +26,7 @@ export default function Hero() {
           transition={{ duration: 0.7, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
           className={styles.subtitle}
         >
-          Sub-second WebRTC streaming powered by MediaMTX with real-time browser canvas object detection and localized edge management.
+          {t('hero_subtitle')}
         </motion.p>
 
         <motion.div 
@@ -33,10 +36,10 @@ export default function Hero() {
           className={styles.actions}
         >
           <Link href="/demo" className={styles.primaryBtn}>
-            Start Free Trial &rarr;
+            {t('start_trial')} &rarr;
           </Link>
           <Link href="#features" className={styles.secondaryBtn}>
-            Explore Pipeline
+            {t('explore_pipeline')}
           </Link>
         </motion.div>
       </div>
