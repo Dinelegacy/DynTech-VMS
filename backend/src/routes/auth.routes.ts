@@ -2,12 +2,11 @@ import { Router, Request, Response } from 'express';
 import { register, login } from '../controllers/auth.controller';
 import { authenticateToken, authorizeRoles } from '../middleware/auth.middleware';
 
-// Define the shape of your authenticated request
 interface AuthRequest extends Request {
   user?: {
-    id: string;
+    userId: string; 
     email?: string;
-    role?: string;
+    role: string;
   };
 }
 
