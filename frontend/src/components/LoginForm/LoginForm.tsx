@@ -20,7 +20,8 @@ export default function LoginForm() {
     setLoading(true);
 
     try {
-      const res = await fetch('http://localhost:5001/api/v1/auth/login', {
+      const API_URL = process.env.NEXT_PUBLIC_API_URL || 'https://dyntech-vms.onrender.com';
+const res = await fetch(`${API_URL}/api/v1/auth/login`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, password }),
@@ -37,7 +38,7 @@ export default function LoginForm() {
         setError(data.message || data.error || 'Invalid credentials');
       }
     } catch (err) {
-      setError('Backend connection error. Make sure server is running on http://localhost:5001.');
+    setError('Backend connection error. Unable to reach authentication server.');
     } finally {
       setLoading(false);
     }
