@@ -13,7 +13,7 @@ const PORT = process.env.PORT || 5001;
 app.use(cors({
   origin: [
     'http://localhost:3000',
-    'https://dyntech-vms.vercel.app', 
+    'https://dyn-tech-vms.vercel.app', 
     process.env.FRONTEND_URL || ''
   ],
   credentials: true
