@@ -20,9 +20,9 @@ export default function Footer() {
         <div className={styles.navRow}>
           <div className={styles.links}>
            <Link href="/docs" prefetch={false}>Docs</Link>
-<Link href="/terms" prefetch={false}>Terms</Link>
-<Link href="/privacy" prefetch={false}>Privacy</Link>
-<Link href="/support" prefetch={false}>Support</Link>
+           <Link href="/terms" prefetch={false}>Terms</Link>
+           <Link href="/privacy" prefetch={false}>Privacy</Link>
+           <Link href="/support" prefetch={false}>Support</Link>
           </div>
           <span className={styles.copyright}>
             &copy; {new Date().getFullYear()} DynTech VMS. {t('footer_rights')}
