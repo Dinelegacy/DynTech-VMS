@@ -38,11 +38,24 @@ export default function DemoView() {
         </div>
 
         <div className={styles.videoStage}>
+          {/* Fallback layer when camera is off or connecting */}
+          <div className={styles.videoPlaceholder}>
+            <span className={styles.feedText}>{t('camera_stream_1')} — WAITING FOR STREAM SIGNAL</span>
+          </div>
+
+          {/* WebRTC Live Stream Frame */}
           <iframe
-            src="https://vdo.ninja/?view=dyntechvms&autoplay=1&cleanoutput=1"
-            style={{ width: '100%', height: '100%', minHeight: '450px', border: 'none', borderRadius: '8px' }}
+            src="https://vdo.ninja/?view=dyntechvms&autoplay=1&cleanoutput=1&cover=1&transparent=1"
+            className={styles.videoIframe}
             allow="autoplay; camera; microphone; fullscreen; picture-in-picture"
           />
+
+          {/* Simulated AI Detection Overlay */}
+          {showAI && (
+            <div className={styles.mockBoundingBox}>
+              <span className={styles.boxLabel}>PERSON 98%</span>
+            </div>
+          )}
         </div>
 
         <div className={styles.telemetryBar}>
