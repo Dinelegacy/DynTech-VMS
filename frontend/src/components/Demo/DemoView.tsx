@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import { useLanguage } from '../../context/LanguageContext';
+import CameraPlayer from '../CameraPlay/CameraPlayer';
 import styles from './DemoView.module.css';
 
 export default function DemoView() {
@@ -38,11 +39,7 @@ export default function DemoView() {
         </div>
 
         <div className={styles.videoStage}>
-          <iframe
-            src="https://vdo.ninja/?view=dyntechvms&autoplay=1&cleanoutput=1"
-            style={{ width: '100%', height: '100%', minHeight: '450px', border: 'none', borderRadius: '8px' }}
-            allow="autoplay; camera; microphone; fullscreen; picture-in-picture"
-          />
+          <CameraPlayer cameraId="live" showAI={showAI} />
         </div>
 
         <div className={styles.telemetryBar}>
