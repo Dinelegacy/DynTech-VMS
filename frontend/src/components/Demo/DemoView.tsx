@@ -39,7 +39,7 @@ export default function DemoView() {
 
         <div className={styles.videoStage}>
           <iframe
-            src="https://vdo.ninja/?view=dyntechvms&autoplay=1&cleanoutput=1"
+            src="https://vdo.ninja/?whip=dyntechvms&autoplay=1&cleanoutput=1"
             style={{ width: '100%', height: '100%', minHeight: '450px', border: 'none', borderRadius: '8px' }}
             allow="autoplay; camera; microphone; fullscreen; picture-in-picture"
           />
