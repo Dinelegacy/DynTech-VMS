@@ -11,8 +11,8 @@ export default function Pricing() {
     {
       name: t('plan_starter_name'),
       tagline: t('plan_starter_tagline'),
-      price: '$290',
-      period: t('plan_period_month'),
+      price: '2 990 kr',
+      period: t('plan_period_month') || '/mån',
       features: [
         t('plan_starter_f1'),
         t('plan_starter_f2'),
@@ -25,8 +25,8 @@ export default function Pricing() {
     {
       name: t('plan_enterprise_name'),
       tagline: t('plan_enterprise_tagline'),
-      price: '$890',
-      period: t('plan_period_month'),
+      price: '8 990 kr',
+      period: t('plan_period_month') || '/mån',
       features: [
         t('plan_enterprise_f1'),
         t('plan_enterprise_f2'),
@@ -40,7 +40,7 @@ export default function Pricing() {
     {
       name: t('plan_custom_name'),
       tagline: t('plan_custom_tagline'),
-      price: t('plan_custom_price'),
+      price: t('plan_custom_price') || 'Offert',
       period: '',
       features: [
         t('plan_custom_f1'),
@@ -68,7 +68,7 @@ export default function Pricing() {
               className={`${styles.card} ${plan.highlighted ? styles.cardFeatured : ''}`}
             >
               {plan.highlighted && (
-                <div className={styles.featuredBadge}>{t('most_popular')}</div>
+                <div className={styles.featuredBadge}>{t('most_popular') || 'Populärast'}</div>
               )}
 
               <h3 className={styles.planName}>{plan.name}</h3>
@@ -82,7 +82,7 @@ export default function Pricing() {
               <ul className={styles.featureList}>
                 {plan.features.map((feat, fIdx) => (
                   <li key={fIdx} className={styles.featureItem}>
-                    <svg className={styles.checkIcon} width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <svg className={styles.checkIcon} width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                       <polyline points="20 6 9 17 4 12" />
                     </svg>
                     <span>{feat}</span>
@@ -94,7 +94,7 @@ export default function Pricing() {
                 href="/demo" 
                 className={plan.highlighted ? styles.primaryBtn : styles.secondaryBtn}
               >
-                {plan.cta}
+                {plan.cta} &rarr;
               </Link>
             </div>
           ))}

@@ -1,14 +1,15 @@
 'use client';
 
-import React, { useState, useRef, useEffect } from 'react';
-import Link from 'next/link';
+import React, { useState, useRef, useEffect, useCallback } from 'react';
 import { useLanguage } from '../../context/LanguageContext';
 import styles from './DemoView.module.css';
 
 export interface CameraStream {
   id: string;
-  name: string;        // Dynamic camera name from backend/user session
-  streamPath: string;  // e.g. "live/cam1"
+  name: string;         // Dynamic camera name
+  code?: string;        // Optional camera tag (e.g., "CAM-01")
+  streamPath: string;   // e.g. "live/cam1"
+  isConnected?: boolean; // Server override flag
 }
 
 export interface StreamTelemetry {
@@ -18,11 +19,13 @@ export interface StreamTelemetry {
 }
 
 interface DemoViewProps {
-  /** Dynamic camera data */
+  /** Dynamic camera configuration */
   camera?: CameraStream;
-  /** Real-time telemetry metrics */
+  /** Direct connection status override */
+  isConnected?: boolean;
+  /** Stream telemetry metrics */
   telemetry?: StreamTelemetry;
-  /** Callback for AI toggle */
+  /** Callback for AI toggle button */
   onToggleAI?: (enabled: boolean) => void;
 }
 
@@ -32,27 +35,70 @@ const DEFAULT_CAMERA: CameraStream = {
   streamPath: 'live/cam1',
 };
 
-const DEFAULT_TELEMETRY: StreamTelemetry = {
-  latencyMs: 120,
-  fps: 30,
-  protocol: 'WebRTC (WHEP)',
-};
-
 export default function DemoView({
   camera = DEFAULT_CAMERA,
-  telemetry = DEFAULT_TELEMETRY,
+  isConnected,
+  telemetry,
   onToggleAI,
 }: DemoViewProps) {
   const { t } = useLanguage();
   const [showAI, setShowAI] = useState(true);
   const [isFullscreen, setIsFullscreen] = useState(false);
+  
+  // Default strictly to false so it never flashes LIVE on login/render
+  const [isLive, setIsLive] = useState<boolean>(false);
+  
   const videoStageRef = useRef<HTMLDivElement>(null);
 
   const mediaMtxBaseUrl = process.env.NEXT_PUBLIC_MEDIAMTX_URL || 'http://localhost:8889';
-
   const cleanBase = mediaMtxBaseUrl.replace(/\/$/, '');
   const cleanPath = camera.streamPath.replace(/^\//, '').replace(/\/$/, '');
-  const streamUrl = `${cleanBase}/${cleanPath}/`;
+  
+  const streamIframeUrl = `${cleanBase}/${cleanPath}/`;
+  const whepEndpointUrl = `${cleanBase}/${cleanPath}/whep`;
+
+  // Accurate MediaMTX stream status verification
+  const checkStreamHealth = useCallback(async () => {
+    // 1. Honor explicit boolean prop overrides if provided
+    if (typeof isConnected === 'boolean') {
+      setIsLive(isConnected);
+      return;
+    }
+    if (typeof camera.isConnected === 'boolean') {
+      setIsLive(camera.isConnected);
+      return;
+    }
+
+    try {
+      // 2. Ping MediaMTX WHEP endpoint.
+      // If no stream publisher is active, MediaMTX returns 404 Not Found.
+      // If a publisher is active, it returns 400 (Bad Request - missing offer) or 201/405.
+      const res = await fetch(whepEndpointUrl, { 
+        method: 'POST',
+        headers: { 'Content-Type': 'application/sdp' },
+        cache: 'no-store' 
+      });
+
+      if (res.status === 404) {
+        setIsLive(false);
+      } else {
+        // Status 400, 405, 201, etc. indicate an active publisher path on MediaMTX
+        setIsLive(true);
+      }
+    } catch {
+      // Network failure or MediaMTX offline
+      setIsLive(false);
+    }
+  }, [whepEndpointUrl, isConnected, camera.isConnected]);
+
+  useEffect(() => {
+    // Initial check on load/login
+    checkStreamHealth();
+
+    // Poll status every 3 seconds to auto-toggle when camera turns on/off
+    const interval = setInterval(checkStreamHealth, 3000);
+    return () => clearInterval(interval);
+  }, [checkStreamHealth]);
 
   useEffect(() => {
     const handleFullscreenChange = () => {
@@ -93,25 +139,17 @@ export default function DemoView({
 
   return (
     <div className={styles.container}>
-      {/* Centered Dashboard / Camera Name Breadcrumb */}
-      <div className={styles.dashboardHeader}>
-        <div className={styles.breadcrumb}>
-          <Link href="/dashboard" className={styles.backLink}>
-            Dashboard
-          </Link>
-          <span className={styles.breadcrumbSeparator}>/</span>
-          <span className={styles.currentLocation}>{camera.name}</span>
-        </div>
-      </div>
-
       <div className={styles.playerCard}>
-        {/* Minimal Control Bar: Clean LIVE status + Control Actions */}
+        {/* Top Control Bar with Accurate Status & Dynamic Camera Name */}
         <div className={styles.topBar}>
           <div className={styles.statusGroup}>
-            <span className={styles.liveBadge}>
-              <span className={styles.liveDot} />
-              LIVE
+            <span className={isLive ? styles.liveBadge : styles.offlineBadge}>
+              <span className={isLive ? styles.liveDot : styles.offlineDot} />
+              {isLive ? 'LIVE' : 'OFFLINE'}
             </span>
+
+            {camera.code && <span className={styles.camTag}>{camera.code}</span>}
+            <span className={styles.cameraTitle}>{camera.name}</span>
           </div>
 
           <div className={styles.controlsGroup}>
@@ -145,10 +183,11 @@ export default function DemoView({
           </div>
         </div>
 
+        {/* Video Stage */}
         <div className={styles.videoStage} ref={videoStageRef}>
           <iframe
-            key={streamUrl}
-            src={streamUrl}
+            key={streamIframeUrl}
+            src={streamIframeUrl}
             className={styles.streamIframe}
             allow="autoplay; camera; microphone; fullscreen; picture-in-picture"
           />
@@ -167,19 +206,25 @@ export default function DemoView({
           )}
         </div>
 
-        {/* Dynamic Telemetry Footer */}
+        {/* Telemetry Footer Bar */}
         <div className={styles.telemetryBar}>
           <div className={styles.telemetryItem}>
             <span className={styles.telemetryLabel}>LATENCY</span>
-            <span className={styles.telemetryValue}>{telemetry.latencyMs} ms</span>
+            <span className={styles.telemetryValue}>
+              {isLive ? `${telemetry?.latencyMs ?? 120} ms` : '--'}
+            </span>
           </div>
           <div className={styles.telemetryItem}>
             <span className={styles.telemetryLabel}>FPS</span>
-            <span className={styles.telemetryValue}>{telemetry.fps} FPS</span>
+            <span className={styles.telemetryValue}>
+              {isLive ? `${telemetry?.fps ?? 30} FPS` : '--'}
+            </span>
           </div>
           <div className={styles.telemetryItem}>
             <span className={styles.telemetryLabel}>PROTOCOL</span>
-            <span className={styles.telemetryValue}>{telemetry.protocol}</span>
+            <span className={styles.telemetryValue}>
+              {telemetry?.protocol ?? 'WebRTC (WHEP)'}
+            </span>
           </div>
         </div>
       </div>

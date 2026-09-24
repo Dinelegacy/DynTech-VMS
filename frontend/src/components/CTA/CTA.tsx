@@ -17,7 +17,8 @@ export default function CTA() {
 
         <div className={styles.actionWrapper}>
           <Link href="/demo" className={styles.primaryBtn}>
-            {t('start_trial')} &rarr;
+            <span>{t('start_trial')}</span>
+            <span>&rarr;</span>
           </Link>
           <span className={styles.finePrint}>
             {t('cta_fine_print')}

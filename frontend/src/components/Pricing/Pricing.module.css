@@ -12,7 +12,7 @@
 
 .header {
   text-align: center;
-  margin-bottom: 5rem;
+  margin-bottom: 4.5rem;
 }
 
 .title {
@@ -25,10 +25,10 @@
 
 .subtitle {
   font-size: 1.05rem;
-  color: #71717a;
+  color: #a1a1aa;
   max-width: 540px;
   margin: 0 auto;
-  line-height: 1.5;
+  line-height: 1.6;
 }
 
 .grid {
@@ -38,32 +38,49 @@
   align-items: stretch;
 }
 
+/* Default Standard Card */
 .card {
   position: relative;
-  background: rgba(255, 255, 255, 0.02);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.015);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
   padding: 2.5rem 2rem;
   display: flex;
   flex-direction: column;
+  transition: transform 0.2s ease, border-color 0.2s ease;
 }
 
+.card:hover {
+  border-color: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+}
+
+/* Featured / Enterprise Card with Subtle Green Glow */
 .cardFeatured {
-  background: rgba(255, 255, 255, 0.04);
-  border-color: #ffffff;
+  background: radial-gradient(circle at 50% 0%, rgba(16, 185, 129, 0.1) 0%, rgba(255, 255, 255, 0.02) 100%);
+  border: 1px solid rgba(16, 185, 129, 0.35);
+  box-shadow: 0 0 32px rgba(16, 185, 129, 0.08);
 }
 
+.cardFeatured:hover {
+  border-color: rgba(16, 185, 129, 0.5);
+  box-shadow: 0 0 40px rgba(16, 185, 129, 0.15);
+}
+
+/* Floating Popular Badge */
 .featuredBadge {
   position: absolute;
-  top: -12px;
+  top: -13px;
   left: 2rem;
-  background: #ffffff;
+  background-color: #10b981;
   color: #000000;
   font-size: 0.65rem;
-  font-weight: 700;
+  font-weight: 800;
   letter-spacing: 0.08em;
-  padding: 0.2rem 0.6rem;
-  border-radius: 4px;
+  text-transform: uppercase;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  box-shadow: 0 0 12px rgba(16, 185, 129, 0.3);
 }
 
 .planName {
@@ -75,22 +92,23 @@
 
 .planTagline {
   font-size: 0.875rem;
-  color: #71717a;
+  color: #a1a1aa;
   margin-bottom: 2rem;
   min-height: 2.5rem;
+  line-height: 1.4;
 }
 
 .priceContainer {
   display: flex;
   align-items: baseline;
-  gap: 0.3rem;
+  gap: 0.4rem;
   margin-bottom: 2.5rem;
   padding-bottom: 2rem;
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .price {
-  font-size: 3rem;
+  font-size: 2.75rem;
   font-weight: 700;
   letter-spacing: -0.04em;
   color: #ffffff;
@@ -108,6 +126,7 @@
   gap: 1.25rem;
   margin-bottom: 3rem;
   flex-grow: 1;
+  padding: 0;
 }
 
 .featureItem {
@@ -115,44 +134,57 @@
   align-items: center;
   gap: 0.75rem;
   font-size: 0.875rem;
-  color: #a1a1aa;
+  color: #d4d4d8;
 }
 
 .checkIcon {
-  color: #ffffff;
+  color: #10b981;
   flex-shrink: 0;
 }
 
+/* Primary Emerald CTA (Featured Card) */
 .primaryBtn {
-  display: block;
-  text-align: center;
-  background-color: #ffffff;
+  margin-top: auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background-color: #10b981;
   color: #000000;
   font-size: 0.875rem;
-  font-weight: 600;
+  font-weight: 700;
   padding: 0.85rem 1.5rem;
-  border-radius: 980px;
-  transition: opacity 0.15s ease;
+  border-radius: 9999px;
+  text-decoration: none;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 0 16px rgba(16, 185, 129, 0.25);
 }
 
 .primaryBtn:hover {
-  opacity: 0.9;
+  background-color: #34d399;
+  transform: translateY(-1px);
+  box-shadow: 0 0 24px rgba(16, 185, 129, 0.4);
 }
 
+/* Secondary Ghost CTA (Starter & Custom Cards) */
 .secondaryBtn {
-  display: block;
-  text-align: center;
+  margin-top: auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
   background-color: transparent;
   color: #ffffff;
   font-size: 0.875rem;
-  font-weight: 500;
+  font-weight: 600;
   padding: 0.85rem 1.5rem;
-  border-radius: 980px;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  transition: border-color 0.15s ease, background-color 0.15s ease;
+  border-radius: 9999px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  text-decoration: none;
+  transition: all 0.2s ease;
 }
 
 .secondaryBtn:hover {
-  border-color: rgba(255, 255, 255, 0.5);
-  background-color: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.4);
+  background-color: rgba(255, 255, 255, 0.04);
 }

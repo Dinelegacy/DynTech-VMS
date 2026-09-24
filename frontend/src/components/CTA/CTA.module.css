@@ -8,11 +8,14 @@
 .card {
   max-width: 1100px;
   margin: 0 auto;
-  background: rgba(255, 255, 255, 0.02);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  /* Ambient radial gradient with subtle brand tint */
+  background: radial-gradient(circle at 50% 0%, rgba(16, 185, 129, 0.08) 0%, rgba(255, 255, 255, 0.015) 100%);
+  border: 1px solid rgba(16, 185, 129, 0.2);
   border-radius: 24px;
   padding: 5rem 2rem;
   text-align: center;
+  position: relative;
+  overflow: hidden;
 }
 
 .title {
@@ -38,22 +41,33 @@
   gap: 1.25rem;
 }
 
+/* Primary Brand Emerald CTA Button */
 .primaryBtn {
-  background-color: #ffffff;
+  background-color: #10b981;
   color: #000000;
   font-size: 0.95rem;
-  font-weight: 600;
-  padding: 0.9rem 2rem;
+  font-weight: 700;
+  padding: 0.9rem 2.25rem;
   border-radius: 980px;
-  transition: background-color 0.15s ease, transform 0.15s ease;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 0 20px rgba(16, 185, 129, 0.25);
 }
 
 .primaryBtn:hover {
-  background-color: #e4e4e7;
-  transform: translateY(-1px);
+  background-color: #34d399; /* Vibrant highlight */
+  transform: translateY(-2px);
+  box-shadow: 0 0 32px rgba(16, 185, 129, 0.45);
+}
+
+.primaryBtn:active {
+  transform: translateY(0);
 }
 
 .finePrint {
   font-size: 0.8rem;
-  color: #52525b;
+  color: #71717a;
 }

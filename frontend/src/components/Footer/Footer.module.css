@@ -28,10 +28,11 @@
   gap: 0.75rem;
 }
 
+/* Updated logo badge to match green navbar brand */
 .logoBadge {
   width: 28px;
   height: 28px;
-  background-color: #ffffff;
+  background-color: #10b981; /* Emerald green matching navbar */
   color: #000000;
   font-weight: 800;
   font-size: 0.85rem;
