@@ -3,12 +3,12 @@
   top: 0;
   left: 0;
   right: 0;
-  z-index: 100;
+  z-index: 1000; /* Stays above dashboard player cards */
   width: 100%;
   height: 60px;
-  background: rgba(8, 8, 12, 0.7);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
+  background: rgba(9, 9, 11, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
   font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "Inter", sans-serif;
 }
@@ -122,18 +122,16 @@
   top: 100%;
   right: 0;
   margin-top: 8px;
-  background: rgba(22, 22, 26, 0.95);
+  background: #121316; /* Solid dark color stops text bleed */
   border: 1px solid rgba(255, 255, 255, 0.12);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border-radius: 12px;
-  padding: 6px;
+  border-radius: 10px;
+  padding: 5px;
   display: flex;
   flex-direction: column;
   gap: 2px;
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5);
-  min-width: 120px;
-  z-index: 50;
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.8);
+  min-width: 130px;
+  z-index: 99999;
 }
 
 .langOption {
@@ -143,7 +141,7 @@
   font-size: 12px;
   font-weight: 400;
   padding: 8px 12px;
-  border-radius: 8px;
+  border-radius: 6px;
   text-align: left;
   cursor: pointer;
   display: flex;
@@ -181,9 +179,8 @@
   color: #ffffff;
 }
 
-/* Top Navbar "Start Free Trial" Button */
 .trialBtn {
-  background-color: #10b981; /* Emerald green matching logo */
+  background-color: #10b981;
   color: #000000;
   font-weight: 600;
   font-size: 0.875rem;
@@ -199,7 +196,7 @@
 }
 
 .trialBtn:hover {
-  background-color: #34d399; /* Bright highlight on hover */
+  background-color: #34d399;
   transform: translateY(-1px);
   box-shadow: 0 0 20px rgba(16, 185, 129, 0.4);
 }
@@ -208,7 +205,7 @@
   transform: translateY(0);
 }
 
-/* Authenticated User Profile Avatar & Dropdown */
+/* User Profile & High-Elevation Dropdown */
 .profileWrapper {
   position: relative;
   display: flex;
@@ -222,58 +219,73 @@
   cursor: pointer;
   display: flex;
   align-items: center;
+  outline: none; /* Removes browser focus outline */
 }
 
 .avatarBadge {
   width: 32px;
   height: 32px;
   border-radius: 50%;
-  background-color: rgba(16, 185, 129, 0.15);
+  background-color: rgba(16, 185, 129, 0.12);
   color: #10b981;
-  border: 1.5px solid #10b981;
+  border: 1px solid rgba(16, 185, 129, 0.4);
   font-weight: 600;
   font-size: 12px;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: background-color 0.15s ease, border-color 0.15s ease;
+  transition: all 0.15s ease;
 }
 
-.avatarBadge:hover {
-  background-color: rgba(16, 185, 129, 0.25);
-  border-color: #34d399;
+.avatarBtn:hover .avatarBadge {
+  background-color: rgba(16, 185, 129, 0.22);
+  border-color: #10b981;
 }
 
+.avatarBtn:focus-visible .avatarBadge {
+  box-shadow: 0 0 0 2px #09090b, 0 0 0 4px #10b981;
+}
+
+/* Modern Enterprise SaaS Dropdown Container */
 .profileDropdown {
   position: absolute;
-  top: 100%;
+  top: calc(100% + 10px);
   right: 0;
-  margin-top: 8px;
-  width: 220px;
-  background: rgba(22, 22, 26, 0.95);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
+  width: 230px;
+  background: #121316; /* Solid dark color eliminates background transparency bleed */
+  border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 12px;
-  padding: 12px;
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.6);
-  z-index: 50;
+  padding: 6px;
+  box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.85), 0 0 0 1px rgba(255, 255, 255, 0.04);
+  z-index: 99999; /* Prevents video canvas clipping */
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  animation: popoverFade 0.12s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.profileInfo {
+@keyframes popoverFade {
+  from {
+    opacity: 0;
+    transform: translateY(-4px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.profileHeader {
+  padding: 8px 10px 6px;
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 6px;
 }
 
 .userEmail {
   margin: 0;
-  font-size: 13px;
-  color: #f5f5f7;
+  font-size: 12px;
   font-weight: 500;
+  color: #f4f4f5;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -282,39 +294,90 @@
 .roleBadge {
   display: inline-block;
   align-self: flex-start;
-  font-size: 11px;
-  color: #10b981;
-  background-color: rgba(16, 185, 129, 0.12);
-  padding: 2px 8px;
-  border-radius: 4px;
+  font-size: 10px;
   font-weight: 500;
+  color: #a1a1aa;
+  background-color: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 2px 6px;
+  border-radius: 4px;
+  letter-spacing: 0.02em;
 }
 
 .dropdownDivider {
   border: 0;
   height: 1px;
-  background: rgba(255, 255, 255, 0.08);
-  margin: 2px 0;
+  background: rgba(255, 255, 255, 0.07);
+  margin: 4px 0;
 }
 
+/* Nav Menu Group */
+.menuGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.menuItem {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 10px;
+  font-size: 12px;
+  font-weight: 400;
+  color: #d4d4d8;
+  text-decoration: none;
+  border-radius: 6px;
+  transition: all 0.12s ease;
+}
+
+.menuItem:hover {
+  background: rgba(255, 255, 255, 0.06);
+  color: #ffffff;
+}
+
+.menuIcon {
+  width: 14px;
+  height: 14px;
+  color: #a1a1aa;
+}
+
+.menuItem:hover .menuIcon {
+  color: #ffffff;
+}
+
+/* Modern Itemized Sign Out Row */
 .signOutBtn {
   width: 100%;
-  padding: 8px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 10px;
   font-size: 12px;
-  font-weight: 500;
-  color: #ff4d4d;
-  background-color: rgba(255, 77, 77, 0.1);
-  border: 1px solid rgba(255, 77, 77, 0.2);
-  border-radius: 8px;
+  font-weight: 400;
+  color: #f87171;
+  background: transparent;
+  border: none;
+  border-radius: 6px;
   cursor: pointer;
-  text-align: center;
-  transition: background-color 0.15s ease, border-color 0.15s ease;
+  text-align: left;
+  transition: all 0.12s ease;
   font-family: inherit;
 }
 
+.signOutIcon {
+  width: 14px;
+  height: 14px;
+  color: #f87171;
+}
+
 .signOutBtn:hover {
-  background-color: rgba(255, 77, 77, 0.18);
-  border-color: rgba(255, 77, 77, 0.35);
+  background: rgba(239, 68, 68, 0.12);
+  color: #ef4444;
+}
+
+.signOutBtn:hover .signOutIcon {
+  color: #ef4444;
 }
 
 @media (max-width: 768px) {

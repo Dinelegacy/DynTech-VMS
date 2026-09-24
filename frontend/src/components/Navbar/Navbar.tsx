@@ -139,18 +139,44 @@ export default function Navbar() {
 
               {isProfileOpen && (
                 <div className={styles.profileDropdown}>
-                  <div className={styles.profileInfo}>
+                  {/* Account Header Info */}
+                  <div className={styles.profileHeader}>
                     <p className={styles.userEmail}>{user.email}</p>
                     <span className={styles.roleBadge}>System Admin</span>
                   </div>
 
-                  <hr className={styles.dropdownDivider} />
+                  <div className={styles.dropdownDivider} />
 
+                  {/* VMS Quick Navigation Links */}
+                  <div className={styles.menuGroup}>
+                    <a href="#account" className={styles.menuItem}>
+                      <svg className={styles.menuIcon} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+                        <circle cx="12" cy="7" r="4" />
+                      </svg>
+                      Account Settings
+                    </a>
+                    <a href="#system" className={styles.menuItem}>
+                      <svg className={styles.menuIcon} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                        <polyline points="22 12 18 12 15 21 9 3 6 12 2 12" />
+                      </svg>
+                      System Health
+                    </a>
+                  </div>
+
+                  <div className={styles.dropdownDivider} />
+
+                  {/* Sign Out Action */}
                   <button
                     type="button"
                     onClick={handleLogout}
                     className={styles.signOutBtn}
                   >
+                    <svg className={styles.signOutIcon} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" />
+                      <polyline points="16 17 21 12 16 7" />
+                      <line x1="21" y1="12" x2="9" y2="12" />
+                    </svg>
                     Sign Out
                   </button>
                 </div>
