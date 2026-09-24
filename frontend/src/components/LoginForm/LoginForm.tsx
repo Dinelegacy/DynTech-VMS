@@ -9,7 +9,6 @@ import styles from './LoginForm.module.css';
 export default function LoginForm() {
   const { t } = useLanguage();
   const router = useRouter();
-  // Changed initial state to empty string
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
@@ -21,7 +20,6 @@ export default function LoginForm() {
     setLoading(true);
 
     try {
-      // Targets Express server on port 5001
       const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5001';
       const res = await fetch(`${API_URL}/api/v1/auth/login`, {
         method: 'POST',
@@ -32,9 +30,19 @@ export default function LoginForm() {
       const data = await res.json();
 
       if (res.ok) {
+        // 1. Save Token
         if (data.token) {
           localStorage.setItem('token', data.token);
         }
+
+        // 2. Save User Payload (uses backend data if returned, otherwise fallbacks to entered email)
+        const userObj = data.user || { email };
+        localStorage.setItem('user', JSON.stringify(userObj));
+
+        // 3. Dispatch storage event so Navbar updates state immediately
+        window.dispatchEvent(new Event('storage'));
+
+        // 4. Redirect to Demo / Dashboard
         router.push('/demo');
       } else {
         setError(data.message || data.error || 'Invalid credentials');

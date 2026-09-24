@@ -1,90 +1,133 @@
 .hero {
   position: relative;
   width: 100%;
-  min-height: calc(100vh - 70px);
+  min-height: calc(100vh - 60px);
   display: flex;
   align-items: flex-end;
   padding: 60px 48px 80px 48px;
   box-sizing: border-box;
   overflow: hidden;
   background: #0b0c10;
+  /* Enforces modern sans-serif across all child text nodes */
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "Inter", sans-serif;
 }
 
-/* Full Page Background Layer */
+/* Full Page Background Layer & Video Overlay Shield */
 .backgroundContainer {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
   z-index: 0;
-  background: radial-gradient(circle at 60% 40%, rgba(255, 255, 255, 0.04) 0%, rgba(11, 12, 16, 1) 90%);
+  background: 
+    linear-gradient(to right, rgba(11, 12, 16, 0.95) 0%, rgba(11, 12, 16, 0.4) 50%, rgba(11, 12, 16, 0.8) 100%),
+    radial-gradient(circle at 60% 40%, rgba(16, 185, 129, 0.05) 0%, rgba(11, 12, 16, 1) 90%);
   pointer-events: none;
 }
 
 .contentWrapper {
   position: relative;
   z-index: 2;
-  max-width: 520px;
+  max-width: 560px;
   display: flex;
   flex-direction: column;
   gap: 20px;
 }
 
+/* Eyebrow Live Status Badge */
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  align-self: flex-start;
+  background: rgba(16, 185, 129, 0.1);
+  border: 1px solid rgba(16, 185, 129, 0.25);
+  padding: 6px 12px;
+  border-radius: 9999px;
+  font-size: 12px;
+  font-weight: 500;
+  color: #10b981;
+  letter-spacing: -0.01em;
+}
+
+.liveDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: #10b981;
+  box-shadow: 0 0 8px #10b981;
+}
+
 .title {
-  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Inter", sans-serif;
-  font-size: 50px;
+  font-size: clamp(38px, 4.5vw, 52px);
   font-weight: 700;
   line-height: 1.1;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.025em;
   color: #ffffff;
   margin: 0;
-  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.6);
 }
 
 .subtitle {
   font-size: 16px;
-  line-height: 1.5;
-  color: #d1d5db;
+  line-height: 1.55;
+  color: #a1a1a6;
   margin: 0;
   font-weight: 400;
-  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
 }
 
 .actions {
   margin-top: 8px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
 }
 
+/* Unified Brand Emerald Green Button */
 .greenBtn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  background: #00a86b;
-  color: #ffffff;
-  padding: 14px 28px;
-  border-radius: 6px;
-  font-size: 15px;
+  gap: 8px;
+  background: #10b981;
+  color: #000000;
+  padding: 13px 26px;
+  border-radius: 8px;
+  font-size: 14px;
   font-weight: 600;
   text-decoration: none;
-  transition: background-color 0.2s ease, transform 0.1s ease;
-  box-shadow: 0 4px 14px rgba(0, 168, 107, 0.3);
+  transition: background-color 0.15s ease, transform 0.15s ease, box-shadow 0.15s ease;
+  box-shadow: 0 0 20px rgba(16, 185, 129, 0.25);
 }
 
 .greenBtn:hover {
-  background: #008f5a;
+  background: #34d399;
   transform: translateY(-1px);
+  box-shadow: 0 0 25px rgba(16, 185, 129, 0.4);
+}
+
+.btnIcon {
+  width: 16px;
+  height: 16px;
+  transition: transform 0.15s ease;
+}
+
+.greenBtn:hover .btnIcon {
+  transform: translateX(2px);
 }
 
 @media (max-width: 768px) {
   .hero {
     padding: 40px 24px 60px 24px;
-    min-height: 75vh;
-  }
-
-  .title {
-    font-size: 36px;
+    min-height: 80vh;
   }
 
   .contentWrapper {
     max-width: 100%;
+  }
+
+  .title {
+    font-size: 36px;
   }
 }
