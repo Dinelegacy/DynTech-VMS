@@ -22,7 +22,8 @@ export default function SignUpForm() {
     setError('');
     setLoading(true);
 
-    const API_URL = process.env.NEXT_PUBLIC_API_URL || 'https://dyntech-vms.onrender.com';
+    // const API_URL = process.env.NEXT_PUBLIC_API_URL || 'https://dyntech-vms.onrender.com';
+    const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5001';
 
     try {
       const res = await fetch(`${API_URL}/api/v1/auth/register`, {

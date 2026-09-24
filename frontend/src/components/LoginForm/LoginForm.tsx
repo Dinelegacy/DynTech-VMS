@@ -9,7 +9,8 @@ import styles from './LoginForm.module.css';
 export default function LoginForm() {
   const { t } = useLanguage();
   const router = useRouter();
-  const [email, setEmail] = useState('admin@dyntech.se');
+  // Changed initial state to empty string
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
@@ -20,8 +21,9 @@ export default function LoginForm() {
     setLoading(true);
 
     try {
-      const API_URL = process.env.NEXT_PUBLIC_API_URL || 'https://dyntech-vms.onrender.com';
-const res = await fetch(`${API_URL}/api/v1/auth/login`, {
+      // Targets Express server on port 5001
+      const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5001';
+      const res = await fetch(`${API_URL}/api/v1/auth/login`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, password }),
@@ -38,7 +40,7 @@ const res = await fetch(`${API_URL}/api/v1/auth/login`, {
         setError(data.message || data.error || 'Invalid credentials');
       }
     } catch (err) {
-    setError('Backend connection error. Unable to reach authentication server.');
+      setError('Backend connection error. Unable to reach authentication server.');
     } finally {
       setLoading(false);
     }

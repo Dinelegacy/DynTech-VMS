@@ -9,6 +9,9 @@ export default function DemoView() {
   const { t } = useLanguage();
   const [showAI, setShowAI] = useState(true);
 
+  // Fallback to local MediaMTX if process.env is not defined
+  const mediaMtxBaseUrl = process.env.NEXT_PUBLIC_MEDIAMTX_URL || 'http://localhost:8889';
+
   return (
     <div className={styles.container}>
       <div className={styles.header}>
@@ -39,7 +42,7 @@ export default function DemoView() {
 
         <div className={styles.videoStage}>
           <iframe
-            src="https://dyntech-mediamtx.onrender.com/live/cam1/"
+            src={`${mediaMtxBaseUrl}/live/cam1/`}
             style={{ width: '100%', height: '100%', minHeight: '450px', border: 'none', borderRadius: '8px' }}
             allow="autoplay; camera; microphone; fullscreen; picture-in-picture"
           />
