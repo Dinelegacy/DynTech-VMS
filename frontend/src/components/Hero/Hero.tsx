@@ -23,8 +23,19 @@ export default function Hero() {
 
   return (
     <section className={styles.hero}>
-      {/* Full Page Background Layer (Reserved for your video background) */}
-      <div className={styles.backgroundContainer} />
+      {/* Full Page Background Layer with Video Feed */}
+      <div className={styles.backgroundContainer}>
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          className={styles.bgVideo}
+        >
+          {/* Ensure your video file is located at /public/hero-vms.mp4 */}
+         <source src="/hero-stream1.mp4" type="video/mp4" />
+        </video>
+      </div>
 
       {/* Left Overlay Content */}
       <div className={styles.contentWrapper}>

@@ -34,7 +34,7 @@ export default function Features() {
         </motion.h2>
       </div>
 
-      {/* Clean Infinite Hardware Marquee Slider */}
+      {/* Hardware Marquee */}
       <div className={styles.marqueeSection}>
         <div className={styles.marqueeTrack}>
           <div className={styles.marqueeContent}>
@@ -49,22 +49,32 @@ export default function Features() {
 
       {/* Feature Grid */}
       <div className={styles.gridContainer}>
+        {/* Feature 01 */}
         <div className={styles.featureCard}>
-          <div className={styles.cardHeader}>
-            <span className={styles.cardNumber}>01</span>
-            <span className={styles.cardTag}>{t('features_tag_1')}</span>
+          <div className={styles.imageContainer}>
+            <img 
+              src="/images/feature-image-1.jpg" 
+              alt="Feature 1" 
+              className={styles.featureImage} 
+            />
           </div>
+
           <h3 className={styles.cardTitle}>{t('features_title_1')}</h3>
           <p className={styles.cardBody}>
             {t('features_body_1')}
           </p>
         </div>
 
+        {/* Feature 02 */}
         <div className={styles.featureCard}>
-          <div className={styles.cardHeader}>
-            <span className={styles.cardNumber}>02</span>
-            <span className={styles.cardTag}>{t('features_tag_2')}</span>
+          <div className={styles.imageContainer}>
+            <img 
+              src="/images/feature-image-2.jpg" 
+              alt="Feature 2" 
+              className={styles.featureImage} 
+            />
           </div>
+
           <h3 className={styles.cardTitle}>{t('features_title_2')}</h3>
           <p className={styles.cardBody}>
             {t('features_body_2')}

@@ -70,50 +70,65 @@
   }
 }
 
+/* Grid & Cards Layout */
 .gridContainer {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 2rem;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
-  gap: 3rem;
+  gap: 4rem;
 }
 
 .featureCard {
-  border-top: 1px solid rgba(255, 255, 255, 0.15);
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
   padding-top: 2rem;
-}
-
-.cardHeader {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 2rem;
-  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  flex-direction: column;
 }
 
-.cardNumber {
-  font-size: 0.85rem;
-  color: #52525b;
+/* Clean Image Frame */
+.imageContainer {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border-radius: 10px;
+  overflow: hidden;
+  background-color: #090a0f;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  margin-bottom: 1.5rem;
 }
 
-.cardTag {
-  font-size: 0.75rem;
-  letter-spacing: 0.1em;
-  color: #71717a;
+.featureImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+.featureCard:hover .featureImage {
+  transform: scale(1.02);
 }
 
 .cardTitle {
-  font-size: 1.75rem;
+  font-size: 1.5rem;
   font-weight: 600;
   letter-spacing: -0.02em;
   color: #ffffff;
-  margin-bottom: 1rem;
+  margin: 0 0 0.75rem 0;
 }
 
 .cardBody {
-  font-size: 1rem;
+  font-size: 0.95rem;
   line-height: 1.6;
   color: #a1a1aa;
+  margin: 0;
   font-weight: 400;
+}
+
+@media (max-width: 768px) {
+  .gridContainer {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
 }

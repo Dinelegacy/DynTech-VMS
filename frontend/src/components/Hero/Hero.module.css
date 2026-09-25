@@ -12,17 +12,33 @@
   font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "Inter", sans-serif;
 }
 
-/* Full Page Background Layer & Video Overlay Shield */
+/* Full Page Background Layer & Video Container */
 .backgroundContainer {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
   z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.bgVideo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Dark Gradient Overlay Shield sitting cleanly on top of the video */
+.backgroundContainer::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1;
   background: 
     linear-gradient(to right, rgba(11, 12, 16, 0.95) 0%, rgba(11, 12, 16, 0.4) 50%, rgba(11, 12, 16, 0.8) 100%),
-    radial-gradient(circle at 60% 40%, rgba(16, 185, 129, 0.05) 0%, rgba(11, 12, 16, 1) 90%);
-  pointer-events: none;
+    radial-gradient(circle at 60% 40%, rgba(16, 185, 129, 0.05) 0%, rgba(11, 12, 16, 0.85) 90%);
 }
 
 .contentWrapper {

@@ -11,7 +11,7 @@ export default function Pricing() {
     {
       name: t('plan_starter_name'),
       tagline: t('plan_starter_tagline'),
-      price: '2 990 kr',
+      price: '999 kr',
       period: t('plan_period_month') || '/mån',
       features: [
         t('plan_starter_f1'),
@@ -25,7 +25,7 @@ export default function Pricing() {
     {
       name: t('plan_enterprise_name'),
       tagline: t('plan_enterprise_tagline'),
-      price: '8 990 kr',
+      price: '1 999 kr',
       period: t('plan_period_month') || '/mån',
       features: [
         t('plan_enterprise_f1'),
